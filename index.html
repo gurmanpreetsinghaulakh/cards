@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>12 Card Website</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        .card {
+            width: 250px;
+            margin: 15px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        h2 {
+            margin-top: 0;
+            font-size: 1.2em;
+        }
+        p {
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="cardContainer"></div>
+
+    <script>
+        const cardData = [
+            { id: 1, title: "Card 1", description: "INFORMATION ABOUT CARD "},
+            { id: 2, title: "Card 2", description: "INFORMATION ABOUT CARD " },
+            { id: 3, title: "Card 3", description: "INFORMATION ABOUT CARD " },
+            { id: 4, title: "Card 4", description: "INFORMATION ABOUT CARD " },
+            { id: 5, title: "Card 5", description: "INFORMATION ABOUT CARD " },
+            { id: 6, title: "Card 6", description: "INFORMATION ABOUT CARD "},
+            { id: 7, title: "Card 7", description: "INFORMATION ABOUT CARD "},
+            { id: 8, title: "Card 8", description: "INFORMATION ABOUT CARD "},
+            { id: 9, title: "Card 9", description: "INFORMATION ABOUT CARD "},
+            { id: 10, title: "Card 10", description: "INFORMATION ABOUT CARD "},
+            { id: 11, title: "Card 11", description: "INFORMATION ABOUT CARD "},
+            { id: 12, title: "Card 12", description: "INFORMATION ABOUT CARD "},
+        ];
+
+        function createCards() {
+            const container = document.getElementById('cardContainer');
+            cardData.forEach(card => {
+                const cardElement = document.createElement('div');
+                cardElement.className = 'card';
+                cardElement.innerHTML = `
+                    <div class="card-content">
+                        <h2>${card.title}</h2>
+                        <p>${card.description}</p>
+                    </div>
+                `;
+                cardElement.addEventListener('click', () => openDetailPage(card.id));
+                container.appendChild(cardElement);
+            });
+        }
+
+        function openDetailPage(id) {
+            window.open(`detail.html?id=${id})`, '_blank');
+        }
+
+        createCards();
+    </script>
+</body>
+</html>
